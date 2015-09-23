@@ -132,33 +132,6 @@ sudo systemctl enable NetworkManager-dispatcher.service
 echo -e ${infoColor}"END OF CINNAMON INSTALLATION"
 sleep 3
 
-#Infinality
-echo -e ${infoColor}"START OF INFINALITY INSTALLATION"
-echo -e ${questionColor}"Do you want Infinality? (Makes fonts look glorious)"
-select yn in "Yes" "No"; do
-        case $yn in
-                Yes ) 
-                	echo -e ${outputColor};
-			sudo /bin/bash -c 'echo "[infinality-bundle]" >> /etc/pacman.conf';
-			sudo /bin/bash -c "echo 'Server = http://bohoomil.com/repo/\$arch' >> /etc/pacman.conf";
-			sudo /bin/bash -c 'echo "[infinality-bundle-multilib]" >> /etc/pacman.conf';
-			sudo /bin/bash -c "echo 'Server = http://bohoomil.com/repo/multilib/\$arch' >> /etc/pacman.conf";
-			sudo /bin/bash -c 'echo "[infinality-bundle-fonts]" >> /etc/pacman.conf';
-			sudo /bin/bash -c 'echo "Server = http://bohoomil.com/repo/fonts" >> /etc/pacman.conf';
-			sudo dirmngr < /dev/null;
-			sudo pacman -S archlinux-keyring;
-			echo "The next command might take a couple minutes";
-			sudo pacman-key -r 962DDE58;
-			sudo pacman-key -f 962DDE58;
-			sudo pacman-key --lsign-key 962DDE58;
-			sudo pacman -Syyu;
-			sudo pacman -S infinality-bundle-multilib infinality-bundle ibfonts-meta-base;
-			break;;
-                No ) break;;
-        esac
-done
-echo -e ${infoColor}"END OF INFINALITY INSTALLATION"
-sleep 3
 
 #Applications
 echo -e ${infoColor}"START OF APPLICATIONS INSTALLATION"
