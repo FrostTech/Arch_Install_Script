@@ -183,13 +183,13 @@ sleep 3
 
 #Create a user account
 echo -e ${infoColor}"START OF USER ACCOUNT CREATION"
-echo -e ${questionColor}"What would you like your username to be? Must be all lowercase (obamallama)"
+echo -e ${questionColor}"What would you like your username to be? Must be all lowercase."
 read strUsername
 echo -e ${outputColor}
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash ${strUsername}
 arch-chroot /mnt usermod -aG audio,games,rfkill,users,uucp,video,wheel ${strUsername}
 arch-chroot /mnt chfn ${strUsername}
-echo -e ${questionColor}"Please add your username to the sudoers file after root ALL ALL ALL"
+echo -e ${questionColor}"Please add your username to the sudoers file after root ALL=(ALL) ALL"
 sleep 5
 arch-chroot /mnt /bin/bash -c "EDITOR=nano visudo"
 echo -e ${questionColor}"Please set a password for your account"
